@@ -1,0 +1,31 @@
+nav{
+  background-color: goldenrod;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav a{
+  color: white;
+  padding: 1rem;
+  background-color: black;
+  text-decoration-line: none
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: goldenrod;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+}
