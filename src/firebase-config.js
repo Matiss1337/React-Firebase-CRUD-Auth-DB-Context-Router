@@ -5,8 +5,8 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 //auth
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD7nZANPyFMLIKQWBqLEAtErWzNWdab-0c",
-    authDomain: "crud-practice-19f8b.firebaseapp.com",
+    apiKey: xxx
+    authDomain: xxx
     projectId: "crud-practice-19f8b",
     storageBucket: "crud-practice-19f8b.appspot.com",
     messagingSenderId: "381962122299",
