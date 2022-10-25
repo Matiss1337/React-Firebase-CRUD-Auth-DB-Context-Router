@@ -1,17 +1,18 @@
-nav{
+.nav{
   background-color: goldenrod;
   height: 60px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
 }
 
-nav a{
+.nav a{
   color: white;
   padding: 1rem;
   background-color: black;
-  text-decoration-line: none
+  text-decoration-line: none;
+  cursor: pointer;
 }
 
 footer{
@@ -28,4 +29,33 @@ footer{
 body{
   padding: 0;
   margin: 0;
+}
+
+.carCard img{
+  padding: 10px;
+  width: 280px;
+  align-self: center;
+}
+
+.carCard{
+  background-color: blanchedalmond;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 2px solid black;
+  line-height: 5px;
+  padding: 5px;
+}
+
+.carCardContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
 }

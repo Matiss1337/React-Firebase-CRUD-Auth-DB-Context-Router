@@ -3,18 +3,20 @@ import { getFirestore } from "@firebase/firestore";
 //db
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 //auth
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: xxx
-    authDomain: xxx
-    projectId: "crud-practice-19f8b",
-    storageBucket: "crud-practice-19f8b.appspot.com",
-    messagingSenderId: "381962122299",
-    appId: "1:381962122299:web:19d332dc966f713f83181e",
-    measurementId: "G-B59XH77L9J"
+  apiKey: "AIzaSyCxyYwtVeDB8_4r-1fBWFMIRymtX2f-OZg",
+  authDomain: "db-testing-7ece7.firebaseapp.com",
+  projectId: "db-testing-7ece7",
+  storageBucket: "db-testing-7ece7.appspot.com",
+  messagingSenderId: "924173363288",
+  appId: "1:924173363288:web:33ac3a3fe8dbf9f301c22d"
 };
 
 const app = initializeApp(firebaseConfig);
+
+export const storage = getStorage(app)
 
 export const db = getFirestore(app);
 //actualy adds db to app

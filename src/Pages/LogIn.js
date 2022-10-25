@@ -4,7 +4,6 @@ import { signInWithGoogle, auth } from '../firebase-config'
 import { createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
 } from 'firebase/auth'
 
 function LogIn() {
@@ -37,9 +36,6 @@ const login = async ()=> {
   }
 }
 
-const logout = async ()=> {
-  await signOut(auth)
-}
   return (
     <div>
         <div>
@@ -57,11 +53,6 @@ const logout = async ()=> {
         <button onClick={signInWithGoogle}>sign in with Google</button>
         </div>
         </div>
-
-        <h4>User logged in:{globalUser?.email}</h4>
-        <button onClick={logout}>Log Out</button>
-
-
     </div>
   )
 }

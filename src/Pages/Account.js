@@ -1,15 +1,13 @@
-import React from 'react'
-import { useParams } from "react-router-dom"
-import Crud from "../Crud";
+import React, { useState, useEffect, useContext} from "react"
+import { UserContext } from '../UserContext'
 
 function Account() {
-    let { user } = useParams()
-    // super useful to grab variable. like postMessage, user or comment 
+  const {globalUser, setGlobalUser} = useContext(UserContext)
   return (
     <div>
         <h1>welcome to your Profile Page</h1>
-        <Crud/>
-        <h1>{user}</h1>
+        <h1>{globalUser?.email}</h1>
+        <h1>{globalUser?.uid}</h1>
     </div>
   )
 }
