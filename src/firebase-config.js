@@ -6,8 +6,8 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCxyYwtVeDB8_4r-1fBWFMIRymtX2f-OZg",
-  authDomain: "db-testing-7ece7.firebaseapp.com",
+  apiKey: xxx
+  authDomain: xxx
   projectId: "db-testing-7ece7",
   storageBucket: "db-testing-7ece7.appspot.com",
   messagingSenderId: "924173363288",
