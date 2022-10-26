@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext} from "react"
 import { db, storage } from './firebase-config';
 import { UserContext } from './UserContext'
 import Card from "./Card";
-import {v4} from "uuid"
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
-import {collection, getDocs, addDoc, updateDoc, doc, deleteDoc} from 'firebase/firestore'
+import { useNavigate } from "react-router-dom"
+import {ref, uploadBytes} from "firebase/storage"
+import {collection, getDocs, addDoc, updateDoc, doc,} from 'firebase/firestore'
 // getDocs for receiving db and addDoc to add them, doc being an db entry
 // updaateDoc is for updating, doc allows to create an instance of a document
 // deleteDoc for deleting
@@ -23,6 +23,22 @@ const [newYear, setNewYear] = useState(0)
 const [newPrice, setNewPrice] = useState(0)
 const [newInfo, setNewInfo] = useState("")
 const [newTel, setNewTel] = useState("")
+
+
+
+
+
+const [filterHide, setFilterHide] = useState(true);
+  const handleFilterToggle = () => {
+    setFilterHide(!filterHide)};
+
+
+
+const [formHide, setFormHide] = useState(true);
+  const handleToggle = () => {
+    setFormHide(!formHide)};
+
+let navigate = useNavigate()
 
 
 // getDownloadURL(ref(storage, "images/8.jpgkTdjpwwJA2Rhg1buAL4VcvEkLg03"))
@@ -51,27 +67,8 @@ photo: imageUpload.name+globalUser.uid})
 rerenderPage()
 }
 
-// const updateUser = async (id, age) => {
-// // this is so when updating firestore knows which entry to update, it takes db, collection and id
-// const userDoc = doc(db, "users", id)
-// // to update u need 2 things, id and current value
-// const newFields = {age: age + 1}
-// //  define which fields will be updated
-// await updateDoc(userDoc, newFields)
-// //  u need to target with doc(db, colection, id) and newsfields(the value to be updated)
-// }
 
-
-
-///Deleting user
 const rerenderPage=()=>{window.location.reload(true)}
-const deleteUser = async (id)=> {
-//need to reference entry just like for update
-const userDoc = doc(db, "cars", id)
-await deleteDoc(userDoc)
-rerenderPage()
-}
-
 
 useEffect(() => {
 
@@ -86,6 +83,8 @@ console.log("getting users")
 getUsers()
 },[])
 
+
+
 const form = ()=>{
   return   <div className="form">
   <input placeholder="Model" onChange={(event) => {setNewName(event.target.value)}}/>
@@ -97,14 +96,44 @@ const form = ()=>{
 {/* if not 0 then it would allow upload many, but now its just the 1st */}
   <button onClick={uploadAdd}>add car</button></div>
 }
-return (
-  <div className="App">
 
-  {globalUser ? form() : <h1> Please log in to post</h1>}
+
+
+const [sort, setSort] = useState("none")
+const handleSortStateHigh = () => {
+  setSort("high")
+}
+const handleSortStateLow = () => {
+  setSort("low")
+}
+
+const filter = ()=>{
+  return   <div className="filter">
+<button onClick={handleSortStateHigh}>Highest Price</button>
+<button onClick={handleSortStateLow}>Lowest Price</button></div>
+}
+
+return (
+  <div>
+
+{!globalUser ? <button onClick={()=> {navigate("/login")}}>Log in to create add</button>: formHide ? <button className="hideForm" onClick={handleToggle}>Create Add</button> 
+: <button onClick={handleToggle}>Hide Form</button> }
+
+{filterHide ? <button onClick={handleFilterToggle}>Filter</button>:
+<button onClick={handleFilterToggle}>Hide Filter</button>}
+
+{!formHide ? form() : null}
+
+{!filterHide ? filter() : null}
+
+
 <div className="carCardContainer">
-{cars.map((car) => {return(
+{cars.sort((a,b) => {
+if (sort === 'low') {return a.price > b.price ? 1 : -1
+} else if (sort === 'high') {return a.price < b.price ? 1 : -1
+} else return 0
+}).map((car) => {return(
 <Card props={car}/>
-  
 )
 })}
     </div>
@@ -113,4 +142,21 @@ return (
 }
 
 export default Crud;
+
+
+
+
+
+// {cars.sort((a,b) => {
+// if (sort === 'low') {return a.price < b.price ? 1 : -1
+// } else if (sort === 'high') {return a.price > b.price ? 1 : -1
+// } else return 0
+// }).map((car) => {return(
+// <Card props={car}/>
+// )
+// })}
+
+
+
+
 

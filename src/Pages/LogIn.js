@@ -13,6 +13,7 @@ onAuthStateChanged(auth, (globalUser) => {
   setGlobalUser(globalUser)
 })
 
+
 // everytime state changes it updates user 
 
 const [registerEmail, setRegisterEmail] = useState("")

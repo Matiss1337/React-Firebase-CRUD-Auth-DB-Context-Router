@@ -16,7 +16,7 @@
 }
 
 footer{
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
   background-color: goldenrod;
@@ -58,4 +58,10 @@ body{
   display: flex;
   flex-direction: column;
   width: 400px;
+}
+.carCard img {
+    flex-shrink: 0;
+    min-width: 180px;
+    min-height: 180px;
+    max-height: 180px;
 }
